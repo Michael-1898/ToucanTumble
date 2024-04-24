@@ -10,7 +10,7 @@ public class Timer : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        GameObject.Find("Tutorial").SetActive(false);
+        //GameObject.Find("Tutorial").SetActive(false);
         timer = 0;
         txtTimer = GameObject.Find("Timer");
     }

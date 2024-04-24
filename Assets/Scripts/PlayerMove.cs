@@ -36,16 +36,12 @@ public class PlayerMove : MonoBehaviour
         if(Input.GetAxis("Horizontal") < -0.2f)
         {
             transform.rotation = Quaternion.Euler(0, 0, 0);
-            if(rb.gravityScale == 0) {
-                rb.gravityScale = 5;
-            }
+            StartGame();
         }
         if(Input.GetAxis("Horizontal") > 0.2f)
         {
             transform.rotation = Quaternion.Euler(0, 180, 0);
-            if(rb.gravityScale == 0) {
-                rb.gravityScale = 5;
-            }
+            StartGame();
         }
 
         if(Input.GetKeyDown("space") || Input.GetKeyDown("up") || Input.GetKeyDown("w"))
@@ -57,9 +53,7 @@ public class PlayerMove : MonoBehaviour
             velocity.y = 1 * jumpForce;
             rb.velocity = velocity;
 
-            if(rb.gravityScale == 0) {
-                rb.gravityScale = 5;
-            }
+            StartGame();
         }
         if(Input.GetKey("space") || Input.GetKey("up") || Input.GetKey("w") && isJumping == true)
         {
@@ -102,6 +96,15 @@ public class PlayerMove : MonoBehaviour
             if(GameObject.Find("OOB").GetComponent<SpriteRenderer>().enabled == true) {
                 GameObject.Find("OOB").GetComponent<SpriteRenderer>().enabled = false;
             }
+        }
+    }
+
+    void StartGame()
+    {
+        if(rb.gravityScale == 0) {
+            rb.gravityScale = 5;
+            GameObject.Find("Spawner").GetComponent<Spawner>().enabled = true;
+            GameObject.Find("Timer").GetComponent<Timer>().enabled = true;
         }
     }
 }

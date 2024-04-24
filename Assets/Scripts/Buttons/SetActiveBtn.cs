@@ -8,12 +8,6 @@ public class SetActiveBtn : MonoBehaviour
     [SerializeField] GameObject[] A_objects;
     [SerializeField] KeyCode key;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
     // Update is called once per frame
     void Update()
     {
