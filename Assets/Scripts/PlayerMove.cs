@@ -85,7 +85,8 @@ public class PlayerMove : MonoBehaviour
                 GameObject.Find("Player").SetActive(false);
                 GameObject.Find("GameOver").GetComponent<Text>().enabled = true;
                 GameObject.Find("Restart").GetComponent<Image>().enabled = true;
-                GameObject.Find("Restart").GetComponent<Restart>().enabled = true;
+                GameObject.Find("Restart").GetComponent<SceneSwitchBtn>().enabled = true;
+                GameObject.Find("Restart").GetComponent<BoxCollider2D>().enabled = true;
                 GameObject.Find("Restart").transform.GetChild(0).GetComponent<Text>().enabled = true;
             }
         } else {
