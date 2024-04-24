@@ -54,6 +54,9 @@ public class PlayerMove : MonoBehaviour
             rb.velocity = velocity;
 
             StartGame();
+
+            //jump sound
+            GetComponent<AudioSource>().Play();
         }
         if(Input.GetKey("space") || Input.GetKey("up") || Input.GetKey("w") && isJumping == true)
         {
@@ -81,13 +84,21 @@ public class PlayerMove : MonoBehaviour
             killTimer -= Time.deltaTime;
             if(killTimer <= 0) {
                 //end game
-                GameObject.Find("Timer").GetComponent<Timer>().enabled = false;
+                GameObject timer = GameObject.Find("Timer");
+                timer.GetComponent<Timer>().enabled = false;
                 GameObject.Find("Player").SetActive(false);
                 GameObject.Find("GameOver").GetComponent<Text>().enabled = true;
+                GameObject.Find("Score").GetComponent<Text>().enabled = true;
+                GameObject.Find("Highscore").GetComponent<Text>().enabled = true;
                 GameObject.Find("Restart").GetComponent<Image>().enabled = true;
                 GameObject.Find("Restart").GetComponent<SceneSwitchBtn>().enabled = true;
                 GameObject.Find("Restart").GetComponent<BoxCollider2D>().enabled = true;
                 GameObject.Find("Restart").transform.GetChild(0).GetComponent<Text>().enabled = true;
+
+                //score
+                GameObject.Find("Score").GetComponent<Text>().text = "Score:           " + (Mathf.Round(timer.GetComponent<Timer>().GetTime() * 100) / 100);
+                CheckHighscore(timer.GetComponent<Timer>().GetTime());
+                GameObject.Find("Highscore").GetComponent<Text>().text = "Highscore:   " + PlayerPrefs.GetFloat("Highscore");
             }
         } else {
             if(killTimer != 1.2f)
@@ -106,6 +117,13 @@ public class PlayerMove : MonoBehaviour
             rb.gravityScale = 5;
             GameObject.Find("Spawner").GetComponent<Spawner>().enabled = true;
             GameObject.Find("Timer").GetComponent<Timer>().enabled = true;
+        }
+    }
+
+    void CheckHighscore(float time)
+    {
+        if(time > PlayerPrefs.GetFloat("Highscore", 0)) {
+            PlayerPrefs.SetFloat("Highscore", Mathf.Round(time * 100) / 100);
         }
     }
 }

@@ -38,4 +38,9 @@ public class Timer : MonoBehaviour
             GameObject.Find("Spawner5").GetComponent<Spawner>().enabled = true;
         }
     }
+
+    public float GetTime()
+    {
+        return timer;
+    }
 }
