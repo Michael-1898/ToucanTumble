@@ -16,6 +16,10 @@ public class PlayerMove : MonoBehaviour
     Vector3 playerPos;
     float killTimer;
     float endTimer;
+
+    [SerializeField] AudioSource wingFlap;
+    [SerializeField] AudioSource AnvilStrike;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -56,7 +60,7 @@ public class PlayerMove : MonoBehaviour
             StartGame();
 
             //jump sound
-            GetComponent<AudioSource>().Play();
+            wingFlap.Play();
         }
         if(Input.GetKey("space") || Input.GetKey("up") || Input.GetKey("w") && isJumping == true)
         {
@@ -96,7 +100,7 @@ public class PlayerMove : MonoBehaviour
                 GameObject.Find("Restart").transform.GetChild(0).GetComponent<Text>().enabled = true;
 
                 //score
-                GameObject.Find("Score").GetComponent<Text>().text = "Score:           " + (Mathf.Round(timer.GetComponent<Timer>().GetTime() * 100) / 100);
+                GameObject.Find("Score").GetComponent<Text>().text = "Score:          " + (Mathf.Round(timer.GetComponent<Timer>().GetTime() * 100) / 100);
                 CheckHighscore(timer.GetComponent<Timer>().GetTime());
                 GameObject.Find("Highscore").GetComponent<Text>().text = "Highscore:   " + PlayerPrefs.GetFloat("Highscore");
             }
@@ -124,6 +128,13 @@ public class PlayerMove : MonoBehaviour
     {
         if(time > PlayerPrefs.GetFloat("Highscore", 0)) {
             PlayerPrefs.SetFloat("Highscore", Mathf.Round(time * 100) / 100);
+        }
+    }
+
+    void OnCollisionEnter2D(Collision2D col)
+    {
+        if(col.gameObject.CompareTag("Anvil")) {
+            AnvilStrike.Play();
         }
     }
 }

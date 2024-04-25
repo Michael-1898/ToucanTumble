@@ -34,6 +34,7 @@ AudioMixerController:
   - guids:
     - 08c2b68accd364e439aa4b86b833861e
     - af207402cfd76f343aaa6f1acef4b77b
+    - e5a3329c1c4d34b4cbea66026d2ccdf5
     name: View
   m_CurrentViewIndex: 0
   m_TargetSnapshot: {fileID: 24500006}
@@ -48,6 +49,7 @@ AudioMixerGroupController:
   m_GroupID: 08c2b68accd364e439aa4b86b833861e
   m_Children:
   - {fileID: 8141785275047997979}
+  - {fileID: 3373390360792877509}
   m_Volume: 83fc711a6f057f64492dd55e1b169ef9
   m_Pitch: 08c378511f48b2c4ea5f661bc16e43c9
   m_Send: 00000000000000000000000000000000
@@ -81,8 +83,42 @@ AudioMixerSnapshotController:
   m_AudioMixer: {fileID: 24100000}
   m_SnapshotID: 249bb3251bb3752488b2cb3a02e52de9
   m_FloatValues:
+    983dfed4a6db6ad47806a8f8910fd1fc: -3
     9f63879e47181344490a59d50ced61c6: 10
   m_TransitionOverrides: {}
+--- !u!243 &3373390360792877509
+AudioMixerGroupController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Anvil
+  m_AudioMixer: {fileID: 24100000}
+  m_GroupID: e5a3329c1c4d34b4cbea66026d2ccdf5
+  m_Children: []
+  m_Volume: 983dfed4a6db6ad47806a8f8910fd1fc
+  m_Pitch: 54ca361adf38ab24f86b32717d9aadaa
+  m_Send: 00000000000000000000000000000000
+  m_Effects:
+  - {fileID: 5796996977570179633}
+  m_UserColorIndex: 0
+  m_Mute: 0
+  m_Solo: 0
+  m_BypassEffects: 0
+--- !u!244 &5796996977570179633
+AudioMixerEffectController:
+  m_ObjectHideFlags: 3
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  m_EffectID: 4597d401ea434434a8d370cb667ba4bc
+  m_EffectName: Attenuation
+  m_MixLevel: 4a617b0a4df0bd1438218a75fd366248
+  m_Parameters: []
+  m_SendTarget: {fileID: 0}
+  m_EnableWetMix: 0
+  m_Bypass: 0
 --- !u!243 &8141785275047997979
 AudioMixerGroupController:
   m_ObjectHideFlags: 0

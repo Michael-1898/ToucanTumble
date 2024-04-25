@@ -13,12 +13,13 @@ public class Anvil : MonoBehaviour
     {
         Vector3 pos = new Vector3(transform.position.x, transform.position.y - 5.5f, 0);
         GameObject arrow = Instantiate(warningArrow, pos, Quaternion.identity);
-        StartCoroutine(ApplyGravity(arrowTime - 0.1f));
+        StartCoroutine(Enable(arrowTime - 0.1f));
         Destroy(arrow, arrowTime);
     }
 
-    IEnumerator ApplyGravity(float waitTime) {
+    IEnumerator Enable(float waitTime) {
         yield return new WaitForSeconds(waitTime);
         GetComponent<Rigidbody2D>().gravityScale = gravityScale;
+        GetComponent<PolygonCollider2D>().enabled = true;
     }
 }
