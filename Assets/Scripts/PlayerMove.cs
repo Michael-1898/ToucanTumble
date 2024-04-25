@@ -94,15 +94,17 @@ public class PlayerMove : MonoBehaviour
                 GameObject.Find("GameOver").GetComponent<Text>().enabled = true;
                 GameObject.Find("Score").GetComponent<Text>().enabled = true;
                 GameObject.Find("Highscore").GetComponent<Text>().enabled = true;
+                GameObject.Find("ScoreTxt").GetComponent<Text>().enabled = true;
+                GameObject.Find("HighscoreTxt").GetComponent<Text>().enabled = true;
                 GameObject.Find("Restart").GetComponent<Image>().enabled = true;
                 GameObject.Find("Restart").GetComponent<SceneSwitchBtn>().enabled = true;
                 GameObject.Find("Restart").GetComponent<BoxCollider2D>().enabled = true;
                 GameObject.Find("Restart").transform.GetChild(0).GetComponent<Text>().enabled = true;
 
                 //score
-                GameObject.Find("Score").GetComponent<Text>().text = "Score:          " + (Mathf.Round(timer.GetComponent<Timer>().GetTime() * 100) / 100);
+                GameObject.Find("Score").GetComponent<Text>().text = "" + (Mathf.Round(timer.GetComponent<Timer>().GetTime() * 100) / 100);
                 CheckHighscore(timer.GetComponent<Timer>().GetTime());
-                GameObject.Find("Highscore").GetComponent<Text>().text = "Highscore:   " + PlayerPrefs.GetFloat("Highscore");
+                GameObject.Find("Highscore").GetComponent<Text>().text = "" + PlayerPrefs.GetFloat("Highscore");
             }
         } else {
             if(killTimer != 1.2f)
