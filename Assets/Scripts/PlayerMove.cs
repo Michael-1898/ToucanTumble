@@ -100,6 +100,10 @@ public class PlayerMove : MonoBehaviour
                 GameObject.Find("Restart").GetComponent<SceneSwitchBtn>().enabled = true;
                 GameObject.Find("Restart").GetComponent<BoxCollider2D>().enabled = true;
                 GameObject.Find("Restart").transform.GetChild(0).GetComponent<Text>().enabled = true;
+                GameObject.Find("MenuBtn").GetComponent<Image>().enabled = true;
+                GameObject.Find("MenuBtn").GetComponent<SceneSwitchBtn>().enabled = true;
+                GameObject.Find("MenuBtn").GetComponent<BoxCollider2D>().enabled = true;
+                GameObject.Find("MenuBtn").transform.GetChild(0).GetComponent<Text>().enabled = true;
 
                 //score
                 GameObject.Find("Score").GetComponent<Text>().text = "" + (Mathf.Round(timer.GetComponent<Timer>().GetTime() * 100) / 100);
